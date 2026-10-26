@@ -1,1 +1,40 @@
+Задание 1:
+A = float(input("Введите число А: "))
+N = int(input("Введите степень N (>0): "))
+P = 1 #накапливаем произведение
+i = 1
+while i <= N:
+    P *= A #умножение (подсчёт степени)
+    i += 1
+print(f"{A}^{N} = {P}")
 
+Задание 2:
+import math
+x = float(input("Введите x: "))
+eps = float(input("Введите точность eps: ")) #вводим точность (погрешность)
+etalon = math.atan(x) #считаем "эталонное" значение с помощью готовой функции из модуля math
+summ = 0.0 #переменная для накопления суммы членов ряда
+n = 0
+term = x #первый член ряда для arctg(x) равен просто х
+while abs(term) >= eps:
+    summ += term
+    n += 1
+    term = ((-1) ** n) * (x ** (2 * n + 1)) / (2 * n + 1)
+print(f"Эталон: {etalon}")
+print(f"Сумма ряда: {summ}")
+print(f"Погрешность: {abs(etalon - summ)}")
+print(f"Итераций: {n}")
+
+Задание 3:
+p = float(input("Начальный объём: "))
+k = float(input("Прирост (%): "))
+t = float(input("План заготовки: "))
+years = 0
+while p > 0:
+    p = p + p * k / 100 - t
+    years += 1
+    if years > 1000:
+        print("Лес не исчезнет никогда")
+        break
+else:
+      print(f"Лес исчезнет через {years} лет")
